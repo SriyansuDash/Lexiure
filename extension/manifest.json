@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Lexiurer",
+  "version": "1.0.0",
+  "description": "Send files between your phone and this computer.",
+  "action": {
+    "default_title": "Lexiure",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage", "downloads"],
+  "host_permissions": [
+    "http://localhost:8787/*"
+  ]
+}

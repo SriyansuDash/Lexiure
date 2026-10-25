@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">⇄</div>
+      <div>
+        <h1>Bridge Transfer</h1>
+        <p class="sub">Phone ⇄ Computer</p>
+      </div>
+    </div>
+    <span id="conn" class="pill">Connecting</span>
+  </header>
+
+  <section class="card pair">
+    <p class="label">Pairing code</p>
+    <div class="code-row">
+      <span id="code" class="code">------</span>
+      <button id="copy" class="ghost" title="Copy code">Copy</button>
+    </div>
+    <a id="phoneLink" href="#" target="_blank" rel="noopener">Open on phone →</a>
+  </section>
+
+  <section class="card">
+    <div id="drop" class="drop">
+      <div class="drop-icon">↑</div>
+      <strong>Send to phone</strong>
+      <span>Drop files here or click to browse</span>
+      <input id="file" type="file" multiple hidden>
+    </div>
+    <div id="progress" class="progress hidden">
+      <div class="bar"><div id="bar"></div></div>
+      <span id="progressText"></span>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="list-head">
+      <strong>From phone</strong>
+      <span id="count" class="count">0</span>
+    </div>
+    <ul id="list" class="list"></ul>
+    <p id="empty" class="empty">Files you send from your phone will appear here.</p>
+  </section>
+
+  <footer>
+    <details>
+      <summary>Server settings</summary>
+      <input id="server" type="text" spellcheck="false">
+      <button id="saveServer" class="ghost">Save</button>
+    </details>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
