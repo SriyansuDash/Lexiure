@@ -51,9 +51,18 @@
     <p id="empty" class="empty">Files you send from your phone will appear here.</p>
   </section>
 
+  <section class="card settings" style="display: none;">
+    <p class="label">Server URL</p>
+    <div class="code-row">
+      <input type="text" id="server" placeholder="https://lexiure.onrender.com" />
+      <button id="saveServer" class="ghost">Save</button>
+    </div>
+  </section>
+
   <footer>
-       <div id="qr"></div>
+    <div id="qr"></div>
   </footer>
+  
   <script src="qrcode.js"></script>
   <script src="popup.js"></script>
 </body>
