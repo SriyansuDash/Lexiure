@@ -1,3 +1,4 @@
+const qrcode = require('qrcode');
 const DEFAULT_SERVER = 'https://lexiure.onrender.com/';
 const $ = (sel) => document.querySelector(sel);
 
@@ -32,6 +33,11 @@ function applyPairing() {
   $('#code').textContent = room;
   $('#phoneLink').href = `${server}/?room=${room}`;
   $('#server').value = server;
+  
+  const qr = qrcode(0, 'M');
+  qr.addData(`${server}/?room=${room}`);
+  qr.make();
+  $('#qr').innerHTML = qr.createImgTag(4);
 }
 
 async function init() {
@@ -95,7 +101,6 @@ function renderList(items) {
 }
 
 async function downloadItem(item) {
-
   const url = `${server}/api/file?room=${room}&id=${item.id}`;
   await chrome.downloads.download({ url, filename: item.name, saveAs: false }).catch(() => {
     window.open(url, '_blank');
@@ -106,7 +111,6 @@ async function deleteItem(item) {
   await fetch(`${server}/api/file?room=${room}&id=${item.id}`, { method: 'DELETE' });
   refresh();
 }
-
 
 async function uploadFiles(files) {
   const bar = $('#bar');
@@ -161,11 +165,6 @@ function bindDrop() {
     if (files.length) uploadFiles(files);
   });
 }
-   const qr = qrcode(0, 'M');
-   qr.addData(`${server}/?room=${room}`);
-   qr.make();
-   $('#qr').innerHTML = qr.createImgTag(4);
-
 
 $('#copy').addEventListener('click', async () => {
   await navigator.clipboard.writeText(room);
