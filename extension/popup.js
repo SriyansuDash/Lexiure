@@ -1,5 +1,4 @@
-const qrcode = require('qrcode');
-const DEFAULT_SERVER = 'https://lexiure.onrender.com/';
+const DEFAULT_SERVER = 'https://lexiure.onrender.com';
 const $ = (sel) => document.querySelector(sel);
 
 let server = DEFAULT_SERVER;
