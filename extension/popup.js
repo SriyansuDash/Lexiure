@@ -1,4 +1,4 @@
-const DEFAULT_SERVER = 'http://localhost:8787';
+const DEFAULT_SERVER = 'https://lexiure.onrender.com/';
 const $ = (sel) => document.querySelector(sel);
 
 let server = DEFAULT_SERVER;
@@ -161,6 +161,10 @@ function bindDrop() {
     if (files.length) uploadFiles(files);
   });
 }
+   const qr = qrcode(0, 'M');
+   qr.addData(`${server}/?room=${room}`);
+   qr.make();
+   $('#qr').innerHTML = qr.createImgTag(4);
 
 
 $('#copy').addEventListener('click', async () => {

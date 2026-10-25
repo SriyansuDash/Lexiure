@@ -1,15 +1,17 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="popup.css">
 </head>
+
 <body>
   <header>
     <div class="brand">
       <div class="logo">⇄</div>
       <div>
-        <h1>Bridge Transfer</h1>
+        <h1>Lexiure</h1>
         <p class="sub">Phone ⇄ Computer</p>
       </div>
     </div>
@@ -33,7 +35,9 @@
       <input id="file" type="file" multiple hidden>
     </div>
     <div id="progress" class="progress hidden">
-      <div class="bar"><div id="bar"></div></div>
+      <div class="bar">
+        <div id="bar"></div>
+      </div>
       <span id="progressText"></span>
     </div>
   </section>
@@ -48,13 +52,10 @@
   </section>
 
   <footer>
-    <details>
-      <summary>Server settings</summary>
-      <input id="server" type="text" spellcheck="false">
-      <button id="saveServer" class="ghost">Save</button>
-    </details>
+       <div id="qr"></div>
   </footer>
-
+  <script src="qrcode.js"></script>
   <script src="popup.js"></script>
 </body>
+
 </html>
