@@ -29,7 +29,7 @@ const PHONE_PAGE = `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bridge Transfer</title>
+<title>Lexiure</title>
 <style>
   :root { color-scheme: light dark; --accent:#6366f1; --bg:#f6f7fb; --card:#fff; --text:#1f2233; --muted:#6b7280; --line:#e5e7eb; }
   @media (prefers-color-scheme: dark) { :root { --bg:#0f1117; --card:#181b26; --text:#e8e9f0; --muted:#9097a8; --line:#2a2f3d; } }

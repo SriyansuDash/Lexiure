@@ -4,7 +4,6 @@ const $ = (sel) => document.querySelector(sel);
 let server = DEFAULT_SERVER;
 let room = '';
 let timer = null;
-const seen = new Set();
 
 function makeCode() {
   const alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; 
@@ -177,6 +176,47 @@ $('#saveServer').addEventListener('click', async () => {
   applyPairing();
   startPolling();
 });
+function fmtDuration(secs) {
+  if (secs < 60) return '<1m';
+  const h = Math.floor(secs / 3600);
+  const m = Math.floor((secs % 3600) / 60);
+  return h > 0 ? `${h}h ${m}m` : `${m}m`;
+}
+
+async function renderScreenTime() {
+  const { screenTime = {}, current } = await chrome.storage.local.get(['screenTime', 'current']);
+  const today = { ...(screenTime[new Date().toLocaleDateString('en-CA')] || {}) };
+  
+  if (current?.domain) {
+    const live = Math.floor((Date.now() - current.since) / 1000);
+    today[current.domain] = (today[current.domain] || 0) + live;
+  }
+
+  const rows = Object.entries(today).filter(([, s]) => s > 0).sort((a, b) => b[1] - a[1]);
+  const list = $('#siteList');
+  list.innerHTML = '';
+  $('#siteEmpty').classList.toggle('hidden', rows.length > 0);
+
+  for (const [domain, secs] of rows) {
+    const li = document.createElement('li');
+    if (current?.domain === domain) li.classList.add('site-live');
+
+    const name = document.createElement('div');
+    name.className = 'item-info';
+    name.innerHTML = '<div class="item-name"></div>';
+    name.querySelector('.item-name').textContent = domain;
+
+    const value = document.createElement('span');
+    value.className = 'time-value';
+    value.textContent = fmtDuration(secs);
+
+    li.append(name, value);
+    list.appendChild(li);
+  }
+}
+
+renderScreenTime();
+setInterval(renderScreenTime, 1000);
 
 bindDrop();
 init();

@@ -61,10 +61,40 @@
 
   <footer>
     <div id="qr"></div>
+    <section class="card">
+      <div class="list-head">
+        <strong>Internet speed</strong>
+        <button id="speedBtn" class="ghost">Run test</button>
+      </div>
+      <div class="speed-grid">
+        <div class="speed-stat">
+          <span class="speed-label">Ping</span>
+          <span id="speedPing" class="speed-value">--</span>
+        </div>
+        <div class="speed-stat">
+          <span class="speed-label">Download</span>
+          <span id="speedDown" class="speed-value">--</span>
+        </div>
+        <div class="speed-stat">
+          <span class="speed-label">Upload</span>
+          <span id="speedUp" class="speed-value">--</span>
+        </div>
+      </div>
+      <p id="speedStatus" class="speed-status">Tap "Run test" to check your speed.</p>
+    </section>
+    <section class="card">
+      <div class="list-head">
+        <strong>Screen time today</strong>
+        <span class="sub">Per website</span>
+      </div>
+      <ul id="siteList" class="list"></ul>
+      <p id="siteEmpty" class="empty">Browse a website to start tracking.</p>
+    </section>
   </footer>
-  
+
   <script src="qrcode.js"></script>
   <script src="popup.js"></script>
+  <script src="speed.js"></script>
 </body>
 
 </html>
